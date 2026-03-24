@@ -104,7 +104,7 @@ The strategy is evaluated using:
 ---
 
 ## 6. Results
-
+- You may refer to the quantstats report for a detailed analysis of the results.
 | Metric            | Value   |
 |------------------|--------|
 | Sharpe Ratio     | 2.06   |
