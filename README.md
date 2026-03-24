@@ -60,10 +60,10 @@ The backtest evaluates:
 
 
 Metric	Value
-Sharpe Ratio	2.06
-Max Drawdown	-8.0%
-Win Rate	46%
-Expectancy	0.151 R
+- Sharpe Ratio	2.06
+- Max Drawdown	-8.0%
+- Win Rate	46%
+- Expectancy	0.151 R
 
 Key Insights
 - Strategy performance is highly dependent on session-based volatility expansion
