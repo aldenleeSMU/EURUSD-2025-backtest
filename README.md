@@ -1,92 +1,152 @@
 # EURUSD-2025-backtest
-EUR/USD Intraday Strategy Backtest (2025)
-Overview
+*A systematic implementation of discretionary liquidity concepts in FX trading*
 
-This project implements and evaluates a rule-based intraday FX trading strategy on EUR/USD using 5-minute data. The strategy is derived from discretionary price action concepts (liquidity sweeps, fair value gaps, and market structure shifts) and translated into a systematic backtesting framework.
+---
 
-The objective is to assess whether these concepts can generate consistent, risk-adjusted returns under strict execution and risk management rules.
+## 1. Overview
 
-Strategy Logic
+This project implements and evaluates a **rule-based intraday trading strategy** on EUR/USD using 5-minute data.
 
-The strategy follows a structured intraday liquidity framework:
+The strategy translates discretionary price action concepts — including:
+- Liquidity sweeps  
+- Fair Value Gaps (FVG)  
+- Market Structure Shifts (MSS)  
 
-1. Session Framework
-- Asian Session (Accumulation): Defines the initial range (high/low)
-- London Session (Manipulation): Price sweeps liquidity above/below Asian range
-- New York Session (Distribution): Continuation or reversal toward opposing liquidity
+— into a **systematic backtesting framework**.
 
-2. Entry Conditions
+The objective is to determine whether these concepts can produce **consistent, risk-adjusted returns** under strict execution and risk management constraints.
 
-A trade is triggered when all of the following conditions are met:
+---
 
-- Liquidity Sweep
-- Price sweeps Asian high/low during London session
-- Higher Timeframe Context
-- Sweep occurs into a higher timeframe Fair Value Gap (FVG)
-- Market Structure Shift (MSS)
-- Confirmed break in short-term structure (5M / 15M)
-Entry
-- Executed at 0.618 retracement of the impulse leg
+## 2. Strategy Logic
 
-3. Exit Rules
-- Take Profit: Opposing liquidity (Asian range or HTF imbalance)
-- Stop Loss: Beyond liquidity sweep
-- Execution: Uses bid/ask prices to simulate realistic fills
+The strategy follows a structured **intraday liquidity framework**:
 
-Data
-- Source: Dukascopy EUR/USD tick-derived 5-minute data
-- Period: January 2025 – December 2025
-- Fields:
--   Bid/Ask OHLC, Volume
-- Mid-price and spread constructed from bid/ask series
+### 2.1 Session Model
 
-Backtest Assumptions
-- Fixed risk per trade (0.50% of starting equity)
-- No slippage beyond bid/ask spread
-- Orders executed at next available price
-- No latency modelling
-- Single-position exposure (no stacking)
+- **Asian Session (Accumulation)**  
+  Defines the initial range (high / low)
 
-Performance Metrics
+- **London Session (Manipulation)**  
+  Price sweeps liquidity above/below Asian range
 
-The backtest evaluates:
-- Sharpe Ratio
-- Maximum Drawdown
-- Win Rate
-- Expectancy (R-multiple)
-- Payoff Ratio
-- Results
+- **New York Session (Distribution)**  
+  Continuation or reversal toward opposing liquidity
 
+---
 
+### 2.2 Entry Conditions
 
-Metric	Value
-- Sharpe Ratio	2.06
-- Max Drawdown	-8.0%
-- Win Rate	46%
-- Expectancy	0.151 R
+A trade is executed only when all conditions are met:
 
-Key Insights
-- Strategy performance is highly dependent on session-based volatility expansion
-- Drawdowns tend to cluster during:
-- Low volatility environments (EUR/USD compression)
-- Strong directional momentum (particularly during macro-driven moves)
-The edge is strongest during:
-- London session liquidity sweeps
-- Short-term mean reversion following displacement
+1. **Liquidity Sweep**
+   - Price sweeps Asian high/low during London session  
 
-These findings motivated the development of a volatility regime filter, which dynamically adjusts trade frequency and position sizing.
+2. **Higher Timeframe Context**
+   - Sweep occurs into a higher timeframe Fair Value Gap (FVG)  
 
-Limitations
-- No transaction cost modelling beyond spread
-- No slippage or execution latency
-- FVG and MSS detection simplified for systematic implementation
-- Strategy does not incorporate macroeconomic event filtering (e.g. FOMC, NFP)
+3. **Market Structure Shift (MSS)**
+   - Confirmed break in short-term structure (5M / 15M)  
 
-Future Improvements
-- Integrate volatility regime filter for adaptive position sizing
-- Add event risk filter (exclude high-impact news periods)
-- Introduce portfolio context (EUR/USD + Gold interaction)
-- Improve execution modelling (slippage + latency)
+4. **Execution**
+   - Entry at **0.618 retracement** of the impulse leg  
+
+---
+
+### 2.3 Exit Rules
+
+- **Take Profit**:  
+  Opposing liquidity (Asian range or higher timeframe imbalance)
+
+- **Stop Loss**:  
+  Beyond liquidity sweep  
+
+- **Execution Model**:  
+  Uses **bid/ask prices** to simulate realistic fills  
+
+---
+
+## 3. Data
+
+- **Source**: Dukascopy EUR/USD tick-derived data  
+- **Frequency**: 5-minute bars  
+- **Period**: January 2025 – December 2025  
+
+### Fields:
+- Bid/Ask OHLC  
+- Volume  
+- Derived:
+  - Mid-price  
+  - Spread  
+
+---
+
+## 4. Backtest Assumptions
+
+- Fixed risk per trade: **0.50% of starting equity**  
+- No slippage beyond bid/ask spread  
+- Orders executed at next available price  
+- No latency modelling  
+- Single-position exposure (no stacking)  
+
+---
+
+## 5. Performance Metrics
+
+The strategy is evaluated using:
+
+- Sharpe Ratio  
+- Maximum Drawdown  
+- Win Rate  
+- Expectancy (R-multiple)  
+- Payoff Ratio  
+
+---
+
+## 6. Results
+
+| Metric            | Value   |
+|------------------|--------|
+| Sharpe Ratio     | 2.06   |
+| Max Drawdown     | -8.0%  |
+| Win Rate         | 46%    |
+| Expectancy       | 0.151 R |
+
+---
+
+## 7. Key Insights
+
+- Performance is highly dependent on **session-based volatility expansion**  
+
+- Drawdowns cluster during:
+  - Low-volatility environments (EUR/USD compression)  
+  - Strong directional momentum (macro-driven moves)  
+
+- Strategy edge is strongest during:
+  - London session liquidity sweeps  
+  - Short-term mean reversion after displacement  
+
+These findings led to the development of a **volatility regime filter**, which dynamically adjusts:
+- Trade frequency  
+- Position sizing  
+
+---
+
+## 8. Limitations
+
+- No transaction cost modelling beyond spread  
+- No slippage or execution latency  
+- Simplified FVG and MSS detection logic  
+- No macroeconomic event filtering (e.g. FOMC, NFP)  
+
+---
+
+## 9. Future Improvements
+
+- Integrate volatility regime filter for adaptive sizing  
+- Add event risk filter (exclude high-impact news)  
+- Expand to multi-asset framework (EUR/USD + Gold)  
+- Improve execution modelling (slippage + latency) 
 
 How to Run
 1. Install dependencies
