@@ -47,7 +47,7 @@ Performance Metrics
 
 The backtest evaluates:
 
-CAGR (Compound Annual Growth Rate)
+
 Sharpe Ratio
 Maximum Drawdown
 Win Rate
@@ -55,7 +55,7 @@ Expectancy (R-multiple)
 Payoff Ratio
 Results
 
-(Replace with your actual numbers)
+
 
 Metric	Value
 Sharpe Ratio	2.06
