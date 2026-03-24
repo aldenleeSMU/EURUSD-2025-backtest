@@ -41,7 +41,7 @@ Data
 - Mid-price and spread constructed from bid/ask series
 
 Backtest Assumptions
-- Fixed risk per trade (configurable)
+- Fixed risk per trade (0.50% of starting equity)
 - No slippage beyond bid/ask spread
 - Orders executed at next available price
 - No latency modelling
