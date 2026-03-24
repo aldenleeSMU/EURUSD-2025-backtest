@@ -5,7 +5,7 @@
 
 ## 1. Overview
 
-This project implements and evaluates a **rule-based intraday trading strategy** on EUR/USD using 5-minute data.
+This project implements and evaluates my current **rule-based intraday trading strategy** on EUR/USD using 5-minute data.
 
 The strategy translates discretionary price action concepts — including:
 - Liquidity sweeps  
