@@ -16,6 +16,7 @@ The strategy follows a structured intraday liquidity framework:
 - New York Session (Distribution): Continuation or reversal toward opposing liquidity
 
 2. Entry Conditions
+
 A trade is triggered when all of the following conditions are met:
 
 - Liquidity Sweep
