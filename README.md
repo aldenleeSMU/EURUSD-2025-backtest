@@ -18,9 +18,9 @@ New York Session (Distribution): Continuation or reversal toward opposing liquid
 
 A trade is triggered when all of the following conditions are met:
 
-Liquidity Sweep
-Price sweeps Asian high/low during London session
-Higher Timeframe Context
+- Liquidity Sweep
+- Price sweeps Asian high/low during London session
+- Higher Timeframe Context
 Sweep occurs into a higher timeframe Fair Value Gap (FVG)
 Market Structure Shift (MSS)
 Confirmed break in short-term structure (5M / 15M)
